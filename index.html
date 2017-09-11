@@ -36,7 +36,16 @@
 
 		ipcRenderer.on("videoLength", (event, duration)=>{
 			var minutes = duration/60
-			document.querySelector("#durationResult").innerHTML = `Video is ${ minutes } minutes`
+			var outputString;
+			var outputTime;
+			if(minutes >= 60){
+				outputTime = minutes/60
+				outputString = "hours"
+			}else{
+				outputTime = minutes
+				outputString = "minutes"
+			}
+			document.querySelector("#durationResult").innerHTML = `Video is ${ outputTime } ${outputString}`
 		})
 	</script>
 </body>
